@@ -14,7 +14,7 @@ class Pokemon:
             self.level = random.randint(4,5)
 
         self.vida = self.level * 4
-        self.dano = int(self.vida / 1)
+        self.dano = int(self.vida / 3.4)
         
     
     def __str__(self):
