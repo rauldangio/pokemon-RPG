@@ -5,7 +5,11 @@ class Pokemon:
     
     def __str__(self):
         return f"Tipo: {self.tipo}\nEspecie: {self.nome}"
+    
+    def atacar(self, pokemon):
+        print(f"o pokemon {self.nome} atacou {pokemon.nome}!")
 
 meu_pokemon = Pokemon("fogo","charmander")
 pokemon_do_joao_erik = Pokemon("eletrico","pikachu")
-print(meu_pokemon)
+
+pokemon_do_joao_erik.atacar(meu_pokemon)
