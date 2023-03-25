@@ -80,6 +80,7 @@ class Pessoa():
                     break
             elif op == '3' or op == 'trocar':
                 self.mudar_pokemon()
+                meu_pokemon = self.pokemons[0]
             elif op == '1' or op == 'atacar':
                 meu_pokemon.atacar(inimigo_pokemon)
                 if inimigo_pokemon.vida <= 0:
