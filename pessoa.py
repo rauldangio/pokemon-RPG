@@ -3,11 +3,7 @@ import random
 
 NOMES = ["joao","raul","cre","RRR","gary"]
 
-POKEMONS = [
-    PokemonAgua("Squirtle"),
-    PokemonGrama("Bulbassauru"),
-    PokemonFogo("Charmander")
-]
+
 
 class Pessoa():
     def __init__(self,nome = None,pokemons=[]):
@@ -49,7 +45,16 @@ class Inimigo(Pessoa):
         super().__init__(nome, pokemons)   
         if not pokemons:
             for i in range (6):
-                self.pokemons.append(random.choice(POKEMONS))
+                r = random.randint(1,3)
+                if  r== 1:
+                    poke = PokemonAgua("Squirtle")
+                elif r == 3:
+                    poke = PokemonFogo("Charmander")
+                elif r == 2:
+                    poke = PokemonGrama("Bulbassauro")
+
+                self.pokemons.append(poke)
+            
     
 gary = Inimigo()
 print(gary)
