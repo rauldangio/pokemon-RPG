@@ -30,14 +30,18 @@ class Pessoa():
 class Player(Pessoa):
     tipo = "player"
 
-    def capturar(self,pokemon):
+    def capturar_66(self,pokemon):
         if (random.randint(1,3) >= 2):
             self.pokemons.append(pokemon)
             print(f"{self} capturou {pokemon}")
         else:
             print(f"{self} não conseguiu capturar o {pokemon}!")
 
+    def capturar_100(self,pokemon):
+        self.pokemons.append(pokemon)
+        print(f"{self} capturou {pokemon}")
 
+        
 class Inimigo(Pessoa):
     tipo = "inimigo"
     
