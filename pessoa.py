@@ -1,5 +1,5 @@
-from pokemon import *
 import random
+from pokemon import *
 
 NOMES = ["joao","raul","cre","RRR","gary"]
 
@@ -54,8 +54,3 @@ class Inimigo(Pessoa):
                     poke = PokemonGrama("Bulbassauro")
 
                 self.pokemons.append(poke)
-            
-    
-gary = Inimigo()
-print(gary)
-gary.mostrar_pokemons()
