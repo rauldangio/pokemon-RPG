@@ -84,12 +84,17 @@ class Pessoa():
             elif op == '1' or op == 'atacar':
                 meu_pokemon.atacar(inimigo_pokemon)
                 if inimigo_pokemon.vida <= 0:
+                    print(f"Você Ganhou! {inimigo} perdeu!")
                     break
                 
                 if meu_pokemon.vida <= 0:
+                    print(f"Você Perdeu! {inimigo} ganhou!")
                     break
 
             inimigo.escolher_acao(meu_pokemon)
+            if meu_pokemon.vida <= 0:
+                print(f"Você Perdeu! {inimigo} ganhou!")
+                break
             print("#"*60)
             sleep(0.5)
 
