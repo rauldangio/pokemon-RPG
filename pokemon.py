@@ -1,11 +1,17 @@
+import random
+
 class Pokemon:
-    def __init__(self,especie, level=1, nome=None, ): # toda vez que instanciar um objeto essa metodo vai ser usada/construtor
+    def __init__(self,especie, nome=None, level = None): # toda vez que instanciar um objeto essa metodo vai ser usada/construtor
         self.especie = especie
         if nome:
             self.nome = nome
         else:
             self.nome = especie
-        self.level =  level
+        
+        if level:
+            self.level = level
+        else:    
+            self.level = random.randint(4,5)
     
     def __str__(self):
         return f"{self.nome}({self.level})"
