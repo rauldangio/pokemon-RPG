@@ -1,15 +1,24 @@
 class Pokemon:
-    def __init__(self, tipo, nome): # toda vez que instanciar um objeto essa metodo vai ser usada/construtor
+    def __init__(self, tipo, especie, level=1, nome=None, ): # toda vez que instanciar um objeto essa metodo vai ser usada/construtor
         self.tipo = tipo
-        self.nome = nome
+        self.especie = especie
+        if nome:
+            self.nome = nome
+        else:
+            self.nome = especie
+        self.level =  level
     
     def __str__(self):
-        return f"Tipo: {self.tipo}\nEspecie: {self.nome}"
+        return f"{self.nome} ({self.level})"
     
     def atacar(self, pokemon):
-        print(f"o pokemon {self.nome} atacou {pokemon.nome}!")
+        print(f"o pokemon {self.especie} atacou {pokemon.especie}!")
 
-meu_pokemon = Pokemon("fogo","charmander")
+meu_pokemon = Pokemon("fogo","charmander",level=5)
 pokemon_do_joao_erik = Pokemon("eletrico","pikachu")
-
 pokemon_do_joao_erik.atacar(meu_pokemon)
+pokemon_do_gabriel = Pokemon("grama","bulbassauro",nome="tonico")
+
+print(meu_pokemon)
+print(pokemon_do_gabriel)
+
