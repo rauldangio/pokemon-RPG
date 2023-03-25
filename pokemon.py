@@ -21,19 +21,21 @@ class Pokemon:
         return f"{self.nome}({self.level})"
     
 
-    def atacar(self, pokemon):
-        dano = random.randint((self.dano - (level*2 - dano)), (self.dano - (level*2 + dano)))
-        rng = random.randint(1,5)
+    def atacar(self, pokemon, bonus = 1):
+        dano = int(random.randint(self.dano - 2, self.dano + 1) * bonus)
+        rng = random.randint(0,5)
         sleep(1)
         sleep(0.5)
         if rng == 5:
-            self.dano = self.dano * 2
+            dano = dano * 2
             print(f"{self} Critou!")
-        print(f"{self} causou {self.dano} de dano!")
-        pokemon.vida -= self.dano 
-        if rng == 5:
-            self.dano = self.dano / 2
-        if pokemon.vida < 0:
+        elif rng == 0:
+            dano = 0
+            print(f'{self} ERROU!!!!')
+        print(f"{self} causou {dano} de dano!")
+        pokemon.vida -= dano 
+    
+        if pokemon.vida <= 0:
             pokemon.vida = 0
         print(f"{pokemon} esta com {pokemon.vida} de vida!")
         sleep(0.5)
@@ -60,7 +62,11 @@ class PokemonFogo(Pokemon): # classe filha do Pokemon
     
     def atacar(self,pokemon):
         print(f"{self} usou firethrower em {pokemon}!") # sobreescrevendo o metodo atacar (overwrite)
-        super().atacar(pokemon)
+        if pokemon.tipo == "grama":
+            super().atacar(pokemon,bonus=1.1)
+            print("EFETIVO FOGO >>> GRAMA")
+        else:
+            super().atacar(pokemon)
 
     def fogoPelaBoca(self):
         print(f"{self} Soltou fogo pela boca")
@@ -71,7 +77,11 @@ class PokemonAgua(Pokemon): # classe filha do Pokemon
     
     def atacar(self,pokemon):
         print(f"{self} usou watergun em {pokemon}!") # sobreescrevendo o metodo atacar (overwrite)
-        super().atacar(pokemon)
+        if pokemon.tipo == "fogo":
+            super().atacar(pokemon,bonus=1.1)
+            print("EFETIVO AGUA >>> FOGO")
+        else:
+            super().atacar(pokemon)
 
     def cuspiu(self):
         print(f"{self} cuspiu!")
@@ -82,7 +92,14 @@ class PokemonGrama(Pokemon): # classe filha do Pokemon
     
     def atacar(self,pokemon):
         print(f"{self} usou lifeseed em {pokemon}!") # sobreescrevendo o metodo atacar (overwrite)
-        super().atacar(pokemon)
+        if pokemon.tipo == "agua":
+            super().atacar(pokemon,bonus=1.1)
+            print("EFETIVO GRAMA >>> AGUA")
+        else:
+            super().atacar(pokemon)
+
+
+
     def plantouTrigo(self):
         print(f"{self} plantou trigo")
 
