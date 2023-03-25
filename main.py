@@ -70,3 +70,9 @@ def escolher_pokemon_inicial(player):
 jogador = Player(escolhendo_nome_jogador())
 escolher_pokemon_inicial(jogador)
 jogador.mostrar_pokemons()
+
+def batalha_inicial(rival):
+    
+
+
+
