@@ -1,4 +1,7 @@
 from pokemon import *
+import random
+
+NOMES = ["joao","raul","cre","RRR","gary"]
 
 class Pessoa():
     def __init__(self,nome="Anonimo",pokemons=[]):
@@ -8,19 +11,29 @@ class Pessoa():
         return f"{self.nome}"
 
     def mostrar_pokemons(self):
-        for pokemon in self.pokemons:
-            print(pokemon.__str__())
-
+        if self.pokemons:
+            print(f"{self} tem os seguintes pokemons:")
+            for pokemon in self.pokemons:
+                print(f"-->{pokemon}")
+        else:
+            print(f"{self} Nao tem pokemon!")
 
 class Player(Pessoa):
     tipo = "player"
 
+    def capturar(self,pokemon):
+        if (random.randint(1,3) >= 2):
+            self.pokemons.append(pokemon)
+            print(f"{self} capturou {pokemon}")
+        else:
+            print(f"{self} não conseguiu capturar o {pokemon}!")
 
 class nimigo(Pessoa):
     tipo = "inimigo"
   
     
-pokemon_do_raul = PokemonGrama("Bulbassauro",level=5)
-eu = Player("Raul",[pokemon_do_raul])
-print(eu)
+
+eu = Player("Raul")
+eu.mostrar_pokemons()
+eu.capturar(PokemonFogo("charmander"))
 eu.mostrar_pokemons()
