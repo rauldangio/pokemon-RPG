@@ -24,6 +24,7 @@ class Pessoa():
             if c == 0:
                 return pokemon
 
+
     def mostrar_pokemons(self):
         if self.pokemons:
             print(f"{self} tem os seguintes pokemons:")
@@ -31,6 +32,21 @@ class Pessoa():
                 print(f"\t{pokemon} {pokemon.especie} Vida: {pokemon.vida}")
         else:
             print(f"{self} Nao tem pokemon!")
+
+
+    def mudar_pokemon(self):
+        if len(self.pokemons) != 1: 
+            for c,pokemon in enumerate(self.pokemons):
+                print(f"{c} --> {pokemon}")
+            poke_change = int(input("Qual pokemon deseja trocar:"))
+            poke_copy = self.pokemons.copy()
+            poke_que_sera_trocado = poke_copy[0]
+            poke_que_vai_ser_o_primeiro = poke_copy[poke_change]
+            self.pokemons[0] = poke_que_vai_ser_o_primeiro
+            self.pokemons[poke_change] = poke_que_sera_trocado
+            print(f"O {self.pokemons[poke_change]} foi trocado por {self.pokemons[0]}")
+
+
 
     def batalhar(self, inimigo):
         menu = '''
@@ -56,16 +72,23 @@ class Pessoa():
             sleep(0.5)
             print(menu)
             op = input("\nOque deseja fazer? ") 
-            if op == '1' or op == 'atacar':
+            if op == 2 or op == 'fugir':
+                if "Inimigo" in type(inimigo):
+                    print("Você esta em batalha! Nao pode sair!")
+                else:
+                    print("Voce conseguiu fugir!")
+                    break
+            elif op == '3' or op == 'trocar':
+                self.mudar_pokemon()
+            elif op == '1' or op == 'atacar':
                 meu_pokemon.atacar(inimigo_pokemon)
                 if inimigo_pokemon.vida <= 0:
                     break
-                inimigo_pokemon.atacar(meu_pokemon)
+                
                 if meu_pokemon.vida <= 0:
                     break
 
-            elif op == '3' or op == 'trocar':
-                pass
+            inimigo.escolher_acao(meu_pokemon)
             print("#"*60)
             sleep(0.5)
 
@@ -85,6 +108,7 @@ class Player(Pessoa):
         self.pokemons.append(pokemon)
         print(f"{self} capturou {pokemon}")
 
+
 class Inimigo(Pessoa):
     tipo = "inimigo"
     
@@ -99,5 +123,15 @@ class Inimigo(Pessoa):
                     poke = PokemonFogo("Charmander")
                 elif r == 2:
                     poke = PokemonGrama("Bulbassauro")
+            self.pokemons.append(poke)
 
-                self.pokemons.append(poke)
+    def escolher_acao(self,pokemon):
+        escolha = random.randint(1,2)
+        if escolha == 1:
+            if len(self.pokemons) > 1:
+                self.mudar_pokemon()
+            else:
+                escolha = 2
+        if escolha == 2:
+            self.pokemons[0].atacar(pokemon)
+            
