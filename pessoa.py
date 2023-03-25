@@ -22,7 +22,7 @@ class Pessoa():
         if self.pokemons:
             print(f"{self} tem os seguintes pokemons:")
             for pokemon in self.pokemons:
-                print(f"-->{pokemon} --> {pokemon.especie}")
+                print(f"\t{pokemon} --> {pokemon.especie}")
         else:
             print(f"{self} Nao tem pokemon!")
 
@@ -41,7 +41,6 @@ class Player(Pessoa):
         self.pokemons.append(pokemon)
         print(f"{self} capturou {pokemon}")
 
-        
 class Inimigo(Pessoa):
     tipo = "inimigo"
     
