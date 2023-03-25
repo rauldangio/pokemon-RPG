@@ -29,22 +29,44 @@ def escolhendo_nome_jogador():
     
 def escolher_pokemon_inicial(player):
     print(f"então seu nome é {player}")
+    sleep(1)
     print("Sinta-se livre para capturar seu primeiro pokemon")
-    
+    sleep(1)
+
+    global rival 
     while True:
         print("1 --> Bulbassauro\n2 --> Charmander\n3 --> Squirtle")
+        sleep(1)
         pokemon_inicial = int(input("Digite qual pokemon você deseja: "))
+        sleep(0.5)
+        nome = input("deseja color um nome?[n(não)/s(sim)]")
+        while True:
+            if nome in "nN":
+                nome = None
+                break
+            elif nome in "sS":
+                nome = input("Nome do pokemon:")
+                break
+            else:
+                print("Escreva \"s\" para SIM e \"n\" para NÃO")
+            nome = input("deseja color um nome?[n(não)/s(sim)]")
+        
         if pokemon_inicial == 1:
-            player.capturar_100(PokemonGrama("Bulbassauro"))
+            player.capturar_100(PokemonGrama("Bulbassauro",nome=nome))
+            rival = Inimigo("Fernando",pokemons=[PokemonFogo("Charmander")])
             break
         elif pokemon_inicial == 2:
-            player.capturar_100(PokemonFogo("Charmander"))
+            player.capturar_100(PokemonFogo("Charmander",nome=nome))
+            rival = Inimigo("Fernando",pokemons=[PokemonAgua("Squirtle")])            
             break
         elif pokemon_inicial == 3:
-            player.capturar_100(PokemonAgua("Squirtle"))
+            player.capturar_100(PokemonAgua("Squirtle",nome=nome))         
+            rival = Inimigo("Fernando",pokemons=[PokemonGrama("Bulbassauro")])
             break
+
         else:
             print("****por favor escolha do numero de 1 a tres****\n")
     
-
-escolher_pokemon_inicial(Player(escolhendo_nome_jogador()))
+jogador = Player(escolhendo_nome_jogador())
+escolher_pokemon_inicial(jogador)
+jogador.mostrar_pokemons()
