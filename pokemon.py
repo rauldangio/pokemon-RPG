@@ -22,14 +22,16 @@ class Pokemon:
     
 
     def atacar(self, pokemon):
-        rng = random.randint(1,10)
+        dano = random.randint((self.dano - (level*2 - dano)), (self.dano - (level*2 + dano)))
+        rng = random.randint(1,5)
         sleep(1)
-        print(f"{self} causou {self.dano} de dano!")
         sleep(0.5)
-        if rng == 10:
+        if rng == 5:
             self.dano = self.dano * 2
+            print(f"{self} Critou!")
+        print(f"{self} causou {self.dano} de dano!")
         pokemon.vida -= self.dano 
-        if rng == 10:
+        if rng == 5:
             self.dano = self.dano / 2
         if pokemon.vida < 0:
             pokemon.vida = 0
