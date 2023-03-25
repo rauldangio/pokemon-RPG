@@ -9,16 +9,23 @@ class Pokemon:
         self.level =  level
     
     def __str__(self):
-        return f"{self.nome} ({self.level})"
+        return f"{self.nome}({self.level})"
     
     def atacar(self, pokemon):
-        print(f"o pokemon {self.especie} atacou {pokemon.especie}!")
+        print(f"o pokemon {self} atacou {pokemon}!")
 
-meu_pokemon = Pokemon("fogo","charmander",level=5)
-pokemon_do_joao_erik = Pokemon("eletrico","pikachu")
-pokemon_do_joao_erik.atacar(meu_pokemon)
-pokemon_do_gabriel = Pokemon("grama","bulbassauro",nome="tonico")
 
-print(meu_pokemon)
-print(pokemon_do_gabriel)
+class PokemonEletrico(Pokemon): # classe filha do Pokemon
+    def atacar(self,pokemon):
+        print(f"{self} usou choque do trovao em {pokemon}!") # sobreescrevendo o metodo atacar (overwrite)
 
+    def dar_choque(self):
+        print(f"{self} deu choque")
+
+pokemon = PokemonEletrico("eletrico","pikachu")
+pokemon_do_joao_erik = Pokemon("fogo","charmander")
+
+pokemon.atacar(pokemon_do_joao_erik)
+pokemon_do_joao_erik.atacar(pokemon)
+
+pokemon.dar_choque()
