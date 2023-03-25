@@ -53,9 +53,6 @@ class PokemonGrama(Pokemon): # classe filha do Pokemon
     def plantouTrigo(self):
         print(f"{self} plantou trigo")
 
-meu_pokemon = PokemonAgua("squirtle")
-vinicius_pokemon = PokemonFogo("charmander")
 
-print(meu_pokemon)
 
 
