@@ -1,4 +1,4 @@
-from pokemon import PokemonGrama
+from pokemon import *
 
 class Pessoa():
     def __init__(self,nome="Anonimo",pokemons=[]):
