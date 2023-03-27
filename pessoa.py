@@ -8,12 +8,13 @@ NOMES = ["joao","raul","cre","RRR","gary"]
 
 
 class Pessoa():
-    def __init__(self,nome = None,pokemons=[]):
+    def __init__(self,nome = None,pokemons=[], dinheiro = 0):
         if nome:
             self.nome = nome
         else:
             self.nome = NOMES[random.randint(0,len(NOMES)-1)]
         self.pokemons = pokemons
+        self.dinheiro = dinheiro
 
 
     def __str__(self):
@@ -23,6 +24,10 @@ class Pessoa():
         for c,pokemon in enumerate(self.pokemons):
             if c == 0:
                 return pokemon
+
+
+    def ganhar_dinheiro(self,quantidade):
+        pass
 
 
     def mostrar_pokemons(self):
