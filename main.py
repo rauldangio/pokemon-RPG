@@ -1,6 +1,6 @@
 from pessoa import *
 from time import sleep
-'''
+
 def escolhendo_nome_jogador():
     print(f"Olá, Bem vindo ao mundo de Pokemon")
     sleep(1)
@@ -66,14 +66,27 @@ def escolher_pokemon_inicial(player):
 
         else:
             print("****por favor escolha do numero de 1 a tres****\n")
-    
+    print(f"Ele era meu pokemon preferido!")
+    sleep(1)
+    print("Mas tudo bem")
+    sleep(1)
+    print("Mudando de assunto quero te apresentar meu neto")
+    sleep(1)
+    print("Ele se chama Fernando")
+    sleep(1)
+    print("ele veio mais cedo para pegar seu pokemon")
+    sleep(1)
+    print("agora que vocês dois estão aqui")
+    sleep(1)
+    print("quero que vocês batalhem!")
+    sleep(1)
+    print("")
+
+
 jogador = Player(escolhendo_nome_jogador())
 escolher_pokemon_inicial(jogador)
-jogador.mostrar_pokemons()
-'''
 
-jogador = Player("Raul",[PokemonGrama("Bulbassauro",level=100),PokemonFogo("snorlax")])
-rival = Inimigo("Gary",[PokemonAgua("Squirtle" ), PokemonFogo("charmander")])
+
 def batalha_inicial(rival):
     jogador.batalhar(rival)
 
