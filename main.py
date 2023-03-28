@@ -72,8 +72,8 @@ escolher_pokemon_inicial(jogador)
 jogador.mostrar_pokemons()
 '''
 
-jogador = Player("Raul",[PokemonGrama("Bulbassauro")])
-rival = Inimigo("Gary",[PokemonFogo("Charmander")])
+jogador = Player("Raul",[PokemonGrama("Bulbassauro",level=100),PokemonFogo("snorlax")])
+rival = Inimigo("Gary",[PokemonAgua("Squirtle" ), PokemonFogo("charmander")])
 def batalha_inicial(rival):
     jogador.batalhar(rival)
 

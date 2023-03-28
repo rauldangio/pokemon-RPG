@@ -15,7 +15,7 @@ class Pokemon:
 
         self.vida = self.level * 4
         self.dano = int(self.vida / 3.4)
-        
+        self.vivo = True
     
     def __str__(self):
         return f"{self.nome}({self.level})"
@@ -23,7 +23,7 @@ class Pokemon:
 
     def atacar(self, pokemon, bonus = 1):
         dano = int(random.randint(self.dano - 2, self.dano + 1) * bonus)
-        rng = random.randint(0,5)
+        rng = random.randint(0,1) 
         sleep(1)
         sleep(0.5)
         if rng == 5:
@@ -37,12 +37,10 @@ class Pokemon:
     
         if pokemon.vida <= 0:
             pokemon.vida = 0
+            pokemon.vivo = False
         print(f"{pokemon} esta com {pokemon.vida} de vida!")
         sleep(0.5)
-        if pokemon.vida <= 0:
-            print(f"A batalha Acabou, a vide de {pokemon} acabou!")
-            return
-            
+      
 
 
 class PokemonEletrico(Pokemon): # classe filha do Pokemon
