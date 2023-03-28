@@ -18,15 +18,17 @@ class Pokemon:
         self.vivo = True
     
     def __str__(self):
-        return f"{self.nome}({self.level})"
-    
+        if self.nome == self.especie:
+            return f"{self.nome}({self.level})"
+        else:
+            return f"{self.nome}({self.especie}({self.level}))"
 
     def atacar(self, pokemon, bonus = 1):
         dano = int(random.randint(self.dano - 2, self.dano + 1) * bonus)
-        rng = random.randint(0,1) 
+        rng = random.randint(0,9) 
         sleep(1)
         sleep(0.5)
-        if rng == 5:
+        if rng == 9:
             dano = dano * 2
             print(f"{self} Critou!")
         elif rng == 0:
