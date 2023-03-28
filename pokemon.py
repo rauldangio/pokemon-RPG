@@ -77,7 +77,7 @@ class PokemonAgua(Pokemon): # classe filha do Pokemon
     
     def atacar(self,pokemon):
         print(f"{self} usou watergun em {pokemon}!") # sobreescrevendo o metodo atacar (overwrite)
-        if pokemon.tipo == "fogo":
+        if pokemon.tipo == "fogo" :
             super().atacar(pokemon,bonus=1.1)
             print("EFETIVO AGUA >>> FOGO")
         else:
